@@ -40,7 +40,7 @@ class DayScaffold():
             print("SKIPPING: No puzzle as date exceeds the 25th.") 
             return   
         
-        print(f"GENERATING: creating files for year {year} day {day}.")
+        print(f"BUILDING: Creating scaffold for year {year} day {day}.")
         project_root = Path(__file__).parent.parent 
 
         day_file_path = project_root / str(year) / "code" / f"day_{day}.py" 
@@ -51,4 +51,4 @@ class DayScaffold():
         
         puzzle_input_path = project_root / str(year) / "puzzle_inputs" / f"day_{day}.txt" 
         DayScaffold.generate_file(puzzle_input_path)
-        print("COMPLETE: ")
+        print(f"COMPLETE: Scaffolding has been created for year {year} day {day}.")
