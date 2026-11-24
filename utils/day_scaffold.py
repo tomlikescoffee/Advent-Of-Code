@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from datetime import datetime
 from pathlib import Path 
 from string import Template
@@ -42,6 +43,11 @@ class DayScaffold():
         
         print(f"BUILDING: Creating scaffold for year {year} day {day}.")
         project_root = Path(__file__).parent.parent 
+        year_directory = project_root / str(year) 
+
+        if not year_directory.exists(): 
+            print(f"ERROR: Year directory `{year_directory}` has not been created. The scaffold for year {year} can be built by running `year_scaffold.py`")
+            return
 
         day_file_path = project_root / str(year) / "code" / f"day_{day}.py" 
         day_template_path = project_root / "data" / "templates" / "day_template.txt" 
@@ -53,4 +59,11 @@ class DayScaffold():
         DayScaffold.generate_file(puzzle_input_path)
         print(f"COMPLETE: Scaffolding has been created for year {year} day {day}.")
 
-DayScaffold.build(year=2025, day=13)
+def main() -> None: 
+    args_parser = ArgumentParser() 
+    args_parser.add_argument(f"-y", "--year", type=int, default=None, help=f"What year the scaffold files will be created inside inside.")
+    args_parser.add_argument(f"-d", "--day", type=int, default=None, help=f"What day to create scaffold files will be made for. Min: {DayScaffold.min_aoc_day} Max: {DayScaffold.max_aoc_day}")
+    args = args_parser.parse_args()
+    DayScaffold.build(year=args.year, day=args.day)
+    
+if __name__ == "__main__": main()
