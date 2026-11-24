@@ -61,8 +61,9 @@ class DayScaffold():
 
 def main() -> None: 
     args_parser = ArgumentParser() 
-    args_parser.add_argument(f"-y", "--year", type=int, default=None, help=f"What year the scaffold files will be created inside inside.")
-    args_parser.add_argument(f"-d", "--day", type=int, default=None, help=f"What day to create scaffold files will be made for. Min: {DayScaffold.min_aoc_day} Max: {DayScaffold.max_aoc_day}")
+    args_parser.add_argument(f"-y", "--year", type=int, default=None, help=f"What year the scaffolding files will be created inside of.")
+    args_parser.add_argument(f"-d", "--day", type=int, default=None, help=f"What day to create scaffolding files for. "
+                             f"Min: {DayScaffold.min_aoc_day} Max: {DayScaffold.max_aoc_day}")
     args = args_parser.parse_args()
     DayScaffold.build(year=args.year, day=args.day)
     

@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from datetime import datetime
 from pathlib import Path
 from string import Template
@@ -5,6 +6,7 @@ from string import Template
 
 class YearScaffold():
     first_aoc_year = 2015
+    latest_aoc_year = datetime.now().year if datetime.now().month == 12 else datetime.now().year - 1
     
     @staticmethod
     def create_dir(dir_to_create : Path) -> None: 
@@ -16,13 +18,9 @@ class YearScaffold():
 
     @staticmethod
     def generate_directory_structure(year:int=None) -> Path|None:  
-        latest_aoc_year = int(datetime.today().strftime("%Y"))
-        current_month = int(datetime.today().strftime("%m"))
-        
-        if current_month != 12: latest_aoc_year -= 1
-        year_to_create = year if year is not None else latest_aoc_year
+        year_to_create = year if year is not None else YearScaffold.latest_aoc_year
 
-        if YearScaffold.first_aoc_year <= year_to_create <= latest_aoc_year:             
+        if YearScaffold.first_aoc_year <= year_to_create <= YearScaffold.latest_aoc_year:             
             print(f"GENERATING: Directory structure for {year_to_create}.")
             project_root = Path(__file__).parent.parent 
             year_dir = project_root / str(year_to_create)
@@ -31,8 +29,8 @@ class YearScaffold():
             YearScaffold.create_dir(year_dir / "puzzle_inputs")   
             return year_dir 
         else: 
-            print(f"ERROR: {year_to_create} is an invalid year for Advent Of Code.\n"
-                  f"Valid years are between {YearScaffold.first_aoc_year} and {latest_aoc_year}.")
+            print(f"ERROR: {year_to_create} is an invalid year for Advent Of Code. "
+                  f"Valid years are between {YearScaffold.first_aoc_year} and {YearScaffold.latest_aoc_year}.")
             return None
         
     @staticmethod
@@ -60,3 +58,12 @@ class YearScaffold():
         year_dir = YearScaffold.generate_directory_structure(year) 
         if year_dir: YearScaffold.generate_base_files(year_dir)
         print(f"COMPLETE: Scaffolding has been created for AOC year {year}.")
+
+def main() -> None: 
+    args_parser = ArgumentParser() 
+    args_parser.add_argument(f"-y", "--year", type=int, default=None, help=f"What year to create scaffolding files and directories for. " 
+                             f"Min: {YearScaffold.first_aoc_year} Max: {YearScaffold.latest_aoc_year}")
+    args = args_parser.parse_args()
+    YearScaffold.build(year=args.year)
+    
+if __name__ == "__main__": main()
