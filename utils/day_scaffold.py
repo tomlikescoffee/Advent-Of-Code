@@ -44,7 +44,7 @@ class DayScaffold():
         project_root = Path(__file__).parent.parent 
 
         day_file_path = project_root / str(year) / "code" / f"day_{day}.py" 
-        day_template_path = project_root / "templates" / "day_template.txt" 
+        day_template_path = project_root / "data" / "templates" / "day_template.txt" 
         
         day_template = Template(day_template_path.read_text()).substitute({"day" : DayScaffold.number_to_word[day]})  
         DayScaffold.generate_file(day_file_path, day_template)
@@ -52,3 +52,5 @@ class DayScaffold():
         puzzle_input_path = project_root / str(year) / "puzzle_inputs" / f"day_{day}.txt" 
         DayScaffold.generate_file(puzzle_input_path)
         print(f"COMPLETE: Scaffolding has been created for year {year} day {day}.")
+
+DayScaffold.build(year=2025, day=13)

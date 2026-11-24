@@ -18,10 +18,9 @@ class YearScaffold():
     def generate_directory_structure(year:int=None) -> Path|None:  
         latest_aoc_year = int(datetime.today().strftime("%Y"))
         current_month = int(datetime.today().strftime("%m"))
+        
         if current_month != 12: latest_aoc_year -= 1
-
         year_to_create = year if year is not None else latest_aoc_year
-        latest_aoc_year = 2026
 
         if YearScaffold.first_aoc_year <= year_to_create <= latest_aoc_year:             
             print(f"GENERATING: Directory structure for {year_to_create}.")
@@ -46,7 +45,7 @@ class YearScaffold():
             print(f"CREATING: __init__.py in {str(year_dir / 'code')}") 
             init_path.touch()
 
-        readme_template_path = year_dir.parent / "templates" / "README_template.txt"
+        readme_template_path = year_dir.parent / "data" / "templates" / "README_template.txt"
         readme_path = year_dir / "README.md"
         if not readme_path.exists(): 
             print(f"CREATING: README.md in `{year_dir}`")
