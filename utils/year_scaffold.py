@@ -56,7 +56,7 @@ class YearScaffold():
             print(f"SKIPPING: README.md exists in `{year_dir}`")
 
     @staticmethod
-    def build_year_scaffold(year:int=None) -> None: 
+    def build(year:int=None) -> None: 
         print(f"BUILDING: Creating scaffold for AOC year {year}.")
         year_dir = YearScaffold.generate_directory_structure(year) 
         if year_dir: YearScaffold.generate_base_files(year_dir)

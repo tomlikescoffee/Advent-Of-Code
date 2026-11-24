@@ -29,7 +29,7 @@ class DayScaffold():
             print(f"ERROR: `{file_path.name}` not created. One or more missing directories in `{file_path.parent}`.") 
 
     @staticmethod
-    def build_day_scaffold(day:int=None, year:int=None) -> None:  
+    def build(day:int=None, year:int=None) -> None:  
         if not year: year = int(datetime.today().strftime("%Y"))
         if not day: day = int(datetime.today().strftime("%d"))
         
