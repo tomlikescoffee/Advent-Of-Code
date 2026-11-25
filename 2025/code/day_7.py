@@ -2,12 +2,9 @@ from solution_base import Solution
 
 
 class DaySeven(Solution):
-
-
     def parse_puzzle_input(self):
         puzzle_input = self.get_puzzle_input()
         return ((puzzle_input[0].find("S"), 0), puzzle_input)
-
 
     def parse_tachyon_beams(self) -> int: 
         next_beams, found_beams = {}, {} 
@@ -33,16 +30,13 @@ class DaySeven(Solution):
             timelines = max(timelines, sum(found_beams.values())) 
         return num_splits, timelines
 
-
     def task_one(self) -> int: 
         num_splits, _ = self.parse_tachyon_beams()
         return num_splits
 
-
     def task_two(self) -> int:  
         _, timelines = self.parse_tachyon_beams()
         return timelines
-
 
 if __name__ == "__main__": 
     s = DaySeven() 

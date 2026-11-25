@@ -2,8 +2,6 @@ from solution_base import Solution
 
 
 class DayOne(Solution):
-
-
     def task_one(self) -> int: 
         dial_num = 50 
         psswd = 0
@@ -15,7 +13,6 @@ class DayOne(Solution):
                 dial_num = (dial_num + rotation) % 100 
             if dial_num == 0: psswd += 1 
         return psswd 
-
 
     def task_two(self) -> int:
         dial_num = 50 
@@ -39,8 +36,8 @@ class DayOne(Solution):
             elif pos == 0: psswd += 1 
         return psswd 
 
-
 if __name__ == "__main__": 
     s = DayOne() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

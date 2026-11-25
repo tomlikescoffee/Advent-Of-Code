@@ -2,8 +2,6 @@ from solution_base import Solution
 
 
 class DayFive(Solution):
-
-
     def parse_puzzle_input(self): 
         number_ranges = [] 
         ids_to_check = [] 
@@ -12,7 +10,6 @@ class DayFive(Solution):
             if "-" in line: number_ranges.append([int(x) for x in line.split("-")])
             elif line != "": ids_to_check.append(int(line))
         return (number_ranges, ids_to_check)
-
 
     def task_one(self) -> int:  
         total = 0
@@ -23,7 +20,6 @@ class DayFive(Solution):
                     total += 1
                     break 
         return total
-
 
     def task_two(self) -> int: 
         total = 0
@@ -40,7 +36,6 @@ class DayFive(Solution):
         for start, end in number_ranges:  
             total += (end - start + 1)
         return total
-
 
 if __name__ == "__main__": 
     s = DayFive() 

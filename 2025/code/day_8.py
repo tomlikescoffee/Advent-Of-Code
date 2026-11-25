@@ -3,17 +3,14 @@ from solution_base import Solution
 
 
 class DayEight(Solution):
-
-
     def __init__(self):
+        super().__init__()
         self.num_shortest_connections = 1000
-
 
     def calculate_distance(self, a, b) -> float: 
         x1, y1, z1 = a
         x2, y2, z2 = b 
         return math.sqrt(math.pow(x1 - x2, 2) + math.pow(y1 - y2, 2) + math.pow(z1 - z2, 2))
-
 
     def parse_puzzle_input(self):  
         puzzle_input = self.get_puzzle_input()
@@ -26,7 +23,6 @@ class DayEight(Solution):
                 coords_by_distance[(coord_a, coord_b)] = self.calculate_distance(coord_a, coord_b)  
         return ([k for k, _ in sorted(coords_by_distance.items(), key=lambda item: item[1])], len(individual_coords))
         
-
     def task_one(self) -> int: 
         coord_pairs, _ = self.parse_puzzle_input()
         circuits = [set([coord_pairs[0]])] 
@@ -50,7 +46,6 @@ class DayEight(Solution):
         circuits.sort(key=lambda x:len(x), reverse=True)
         return len(circuits[0]) * len(circuits[1]) * len(circuits[2])
         
-
     def task_two(self) -> int: 
         coord_pairs, num_coords = self.parse_puzzle_input()  
         circuits = [set([coord_pairs[0]])] 
@@ -76,7 +71,6 @@ class DayEight(Solution):
                 if len(circuit) == num_coords: return coord_a[0] * coord_b[0]
         return 0
 
-        
 if __name__ == "__main__": 
     s = DayEight() 
     print(f"Part 1: {s.task_one()}")

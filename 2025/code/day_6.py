@@ -2,8 +2,6 @@ from solution_base import Solution
 
 
 class DaySix(Solution): 
-
-
     def parse_puzzle_input(self): 
         spaces_sets = []
         common_spaces = set()
@@ -20,18 +18,15 @@ class DaySix(Solution):
         homework_problems = [[problem[i:j] for (i, j) in common_spaces] for problem in homework_problems]
         return [[row[i] for row in homework_problems] for i in range(len(homework_problems[0]))]
 
-
     def multiply(self, nums) -> int:  
         res = 1
         for num in nums: res *= int(num)  
         return res
 
-
     def add(self, nums) -> int:  
         res = 0
         for num in nums: res += int(num) 
         return res
-
 
     def task_one(self) -> int: 
         total = 0
@@ -40,7 +35,6 @@ class DaySix(Solution):
             if operator == "*": total += self.multiply(problem[:-1])
             elif operator == "+": total += self.add(problem[:-1])
         return total
-
 
     def task_two(self) -> int: 
         total = 0
@@ -51,7 +45,6 @@ class DaySix(Solution):
             if operator == "+": total += self.add(nums)
             elif operator == "*": total += self.multiply(nums)
         return total
-
 
 if __name__ == "__main__": 
     s = DaySix() 

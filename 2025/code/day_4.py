@@ -8,33 +8,27 @@ class PaperRoll():
         self.num_adjacents = 0
         self.neighbours = {} 
     
-
     def add_neighbour(self, coords : tuple[int, int], neighbour_roll : PaperRoll) -> None:
         if coords not in self.neighbours and neighbour_roll != self: 
             self.neighbours[coords] = neighbour_roll
             self.num_adjacents += 1
     
-
     def remove_neighbour(self, coords : tuple[int, int]) -> None:
         if coords in self.neighbours: 
             self.neighbours.pop(coords)
             self.num_adjacents -= 1
 
-
     def get_num_adjacents(self) -> int:
         return self.num_adjacents 
-
 
     def get_neighbours(self) -> dict[tuple[int, int], PaperRoll]: 
         return self.neighbours 
 
 
 class DayFour(Solution): 
-
-
     def __init__(self) -> None:
+        super().__init__()
         self.num_adjacent_rolls = 4
-
 
     def parse_puzzle_input(self) -> dict[tuple[int, int], PaperRoll]: 
         roll_grid = self.get_puzzle_input()
@@ -52,14 +46,12 @@ class DayFour(Solution):
                         paper_roll.add_neighbour((j, i), coords_to_obj[j, i])
                         coords_to_obj[j, i].add_neighbour((x, y), paper_roll)
         return coords_to_obj               
-
-                    
+          
     def task_one(self) -> int:
         total = 0
         for paper_roll in self.parse_puzzle_input().values(): 
             if paper_roll.get_num_adjacents() < self.num_adjacent_rolls: total += 1
         return total
-
 
     def task_two(self) -> int: 
         paper_roll_removed = True 
@@ -76,8 +68,8 @@ class DayFour(Solution):
                     coords_to_obj.pop(coords)
         return total
                 
-
 if __name__ == "__main__": 
     s = DayFour() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

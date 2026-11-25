@@ -2,11 +2,9 @@ from solution_base import Solution
 
 
 class DayThree(Solution):
-
-
     def __init__(self) -> None:
+        super().__init__()
         self.joltage_len = 12 
-
 
     def task_one(self) -> int:
         total = 0
@@ -20,7 +18,6 @@ class DayThree(Solution):
                     cell_two = max(cell_two, battery_bank[i + 1])
             total += int(cell_one + cell_two)
         return total
-
 
     def task_two(self) -> int: 
         total = 0 
@@ -42,8 +39,8 @@ class DayThree(Solution):
             total += int("".join(joltage_cells))
         return total
 
-
 if __name__ == "__main__": 
     s = DayThree() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    
