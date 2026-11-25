@@ -2,8 +2,6 @@ from solution_base import Solution
 
 
 class DayFive(Solution):
-
-
     def parse_input(self): 
         num_to_nums_before = {} 
         puzzle_input = self.get_puzzle_input()
@@ -16,7 +14,6 @@ class DayFive(Solution):
             else: num_to_nums_before[y] = set([x])
         
         return ([line.split(",")[::-1] for line in puzzle_input[sep_idx + 1:]], num_to_nums_before)
-
 
     def categorise_updates(self, updates, nums_order, update_flag): 
         invalid_updates = []
@@ -31,8 +28,7 @@ class DayFive(Solution):
             return [i for i in updates if i not in invalid_updates]
         return invalid_updates
 
-
-    def task_one(self):
+    def task_one(self) -> int:
         updates, nums_order = self.parse_input()  
         update_sum = 0
         valid_updates = self.categorise_updates(updates, nums_order, True) 
@@ -40,8 +36,7 @@ class DayFive(Solution):
             update_sum += int(update[len(update) // 2])
         return update_sum
 
-
-    def task_two(self): 
+    def task_two(self) -> int: 
         updates, nums_order = self.parse_input()  
         update_sum = 0
         invalid_updates = self.categorise_updates(updates, nums_order, False)  
@@ -60,9 +55,9 @@ class DayFive(Solution):
                 num_set.add(num) 
             update_sum += int(fixed_update[len(fixed_update) // 2])
         return update_sum
-
-            
+     
 if __name__ == "__main__": 
     s = DayFive() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

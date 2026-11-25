@@ -3,8 +3,6 @@ from solution_base import Solution
 
 
 class DayThree(Solution):
-
-
     def parse_input(self, is_task_two : bool):  
         instructions = [] 
         # Regex for part one
@@ -19,8 +17,7 @@ class DayThree(Solution):
         # Flatten 2D array into 1D and return
         return [j for i in instructions for j in i]
         
-
-    def task_one(self): 
+    def task_one(self) -> int: 
         # Valid mul instructions
         valid_instructions = self.parse_input(is_task_two=False)
         total = 0
@@ -30,8 +27,7 @@ class DayThree(Solution):
             total += int(x) * int(y)
         return total
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         # Valid mul, do, don't instructions
         valid_instructions = self.parse_input(is_task_two=True)
         ignore = False  
@@ -47,8 +43,8 @@ class DayThree(Solution):
                 total += int(x) * int(y) 
         return total
 
-
 if __name__ == "__main__": 
     s = DayThree() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

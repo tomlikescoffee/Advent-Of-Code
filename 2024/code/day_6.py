@@ -2,8 +2,6 @@ from solution_base import Solution
 
 
 class DaySix(Solution):
-
-
     def parse_input(self):  
         obstr_coords = set()
         start_coords = None
@@ -16,14 +14,11 @@ class DaySix(Solution):
         max_y = j
         return (start_coords, obstr_coords, max_x, max_y)
 
-
     def apply_move(self, current_coords, direction):
         return tuple(x + y for x, y in zip(current_coords, direction))
 
-
     def reverse_move(self, current_coords, direction):
         return tuple(x - y for x, y in zip(current_coords, direction))
-
 
     def walk_route(self, current_coords, obstr_coords, max_x, max_y):  
         dir_idx = 0
@@ -48,13 +43,11 @@ class DaySix(Solution):
                 route_visited[current_coords] = [directions[dir_idx]] 
         return route_visited
 
-            
-    def task_one(self):
+    def task_one(self) -> int:
         current_coords, obstr_coords, max_x, max_y = self.parse_input() 
-        return len(self.walk_route(current_coords, obstr_coords, max_x, max_y))
-            
+        return len(self.walk_route(current_coords, obstr_coords, max_x, max_y))            
 
-    def task_two(self): 
+    def task_two(self) -> int: 
         start_coords, obstr_coords, max_x, max_y = self.parse_input() 
         distinct_route = self.walk_route(start_coords, obstr_coords, max_x, max_y)
         del distinct_route[start_coords]
@@ -66,10 +59,10 @@ class DaySix(Solution):
             obstr_coords.remove(coords)  
         return count
 
-
 if __name__ == "__main__": 
     s = DaySix() 
     print(f"Part 1: {s.task_one()}")
     print("WARNING: Part two takes ~3.5 mins (208 seconds) to run.\n"
       + "You may want to go get a coffee.")
     print(f"Part 2: {s.task_two()}")
+    

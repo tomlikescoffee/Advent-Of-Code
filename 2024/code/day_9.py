@@ -2,8 +2,6 @@ from solution_base import Solution
 
 
 class DayNine(Solution):
-
-
     def parse_input(self):  
             id_count, pos = 0, 0 
             id_size = {}
@@ -21,7 +19,6 @@ class DayNine(Solution):
                     is_file = not is_file 
             return (id_size, free_space, id_count - 1)
 
-
     def calc_check_sum(self, file_spaces): 
         check_sum = 0 
         for k, v in file_spaces.items():
@@ -29,8 +26,7 @@ class DayNine(Solution):
                 check_sum += k * num 
         return check_sum
 
-
-    def task_one(self):
+    def task_one(self) -> int:
         file_spaces, free_spaces, curr_id = self.parse_input()
         space_idx, id_idx = 0, file_spaces[curr_id][0] - 1
         furthest_file = file_spaces[curr_id][1][id_idx]
@@ -45,7 +41,6 @@ class DayNine(Solution):
             furthest_file = file_spaces[curr_id][1][id_idx]
         return self.calc_check_sum(file_spaces)
 
-
     def process_free_spaces(self, free_spaces):
         split_free_spaces = []
         l, r, n = 0, 1, len(free_spaces)
@@ -56,7 +51,6 @@ class DayNine(Solution):
             r += 1  
         return split_free_spaces
 
-
     def get_leftmost_free(self, split_free_spaces, file_info):
         file_size, file_loc = file_info
         for idx, segment in enumerate(split_free_spaces):
@@ -64,8 +58,7 @@ class DayNine(Solution):
                 return (idx, segment)
         return (-1, []) 
 
-
-    def task_two(self):  
+    def task_two(self) -> int:  
         file_spaces, free_spaces, _ = self.parse_input() 
         split_free_spaces = self.process_free_spaces(free_spaces)
         for id in list(file_spaces.keys())[::-1]:
@@ -78,8 +71,8 @@ class DayNine(Solution):
             else: split_free_spaces[idx] = free_loc[file_spaces[id][0]:]  
         return self.calc_check_sum(file_spaces) 
     
-        
 if __name__ == "__main__": 
     s = DayNine() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

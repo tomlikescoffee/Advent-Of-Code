@@ -2,8 +2,6 @@ from solution_base import Solution
 
 
 class DayTen(Solution):
-
-
     def parse_input(self): 
         trailheads = set()  
         top_map_info = {
@@ -20,7 +18,6 @@ class DayTen(Solution):
         top_map_info["bounds"] = (0, j, 0, i)
         return (top_map_info, trailheads)
 
-
     def validate_coords(self, coords, top_map, visited, bounds): 
         x, y, new_x, new_y = coords
         min_x, max_x, min_y, max_y = bounds
@@ -29,7 +26,6 @@ class DayTen(Solution):
         if(new_y < min_y or new_y > max_y): return False 
         if(top_map[new_y][new_x] != top_map[y][x] + 1): return False 
         return True 
-
 
     def depth_first_search(self, start_coords, top_map_info, check_visited=True):
         stack, visited = [start_coords], set() 
@@ -52,22 +48,19 @@ class DayTen(Solution):
                 visited.add((x, y)) 
         return score
             
-        
-    def task_one(self):
+    def task_one(self) -> int:
         top_map_info, trailheads = self.parse_input()
         trailhead_scores = 0
         for trailhead in trailheads:
             trailhead_scores += self.depth_first_search(trailhead, top_map_info)
         return trailhead_scores
 
-
-    def task_two(self): 
+    def task_two(self) -> int: 
         top_map_info, trailheads = self.parse_input()
         trailhead_scores = 0
         for trailhead in trailheads:
             trailhead_scores += self.depth_first_search(trailhead, top_map_info, False)
         return trailhead_scores
-
 
 if __name__ == "__main__": 
     s = DayTen() 

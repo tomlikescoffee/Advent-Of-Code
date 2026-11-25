@@ -2,8 +2,6 @@ from solution_base import Solution
 
 
 class DayEight(Solution):
-
-
     def parse_input(self):  
         antenna_coords = {}
         boundaries = {}
@@ -20,7 +18,6 @@ class DayEight(Solution):
         boundaries["max_y"] = j 
         return (list(antenna_coords.values()), boundaries)
 
-
     def validate_antinode(self, antinode, boundaries):
         x, y = antinode
         if(x < boundaries["min_x"] or x > boundaries["max_x"]):
@@ -28,9 +25,8 @@ class DayEight(Solution):
         if(y < boundaries["min_y"] or y > boundaries["max_y"]):
             return False 
         return True
-
-        
-    def task_one(self):
+ 
+    def task_one(self) -> int:
         antenna_coords, boundaries = self.parse_input() 
         antinodes = set()
         for coords in antenna_coords:
@@ -45,8 +41,7 @@ class DayEight(Solution):
                         antinodes.add(antinode) 
         return len(antinodes)
 
-
-    def task_two(self): 
+    def task_two(self) -> int: 
         antenna_coords, boundaries = self.parse_input() 
         antinodes = set()
         for coords in antenna_coords: 
@@ -65,8 +60,8 @@ class DayEight(Solution):
                         antinode = tuple(x - y for x, y in zip(antinode, antenna_dist)) 
         return len(antinodes)
 
-
 if __name__ == "__main__": 
     s = DayEight() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

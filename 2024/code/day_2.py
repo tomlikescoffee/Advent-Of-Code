@@ -2,14 +2,11 @@ from solution_base import Solution
 
 
 class DayTwo(Solution):
-
-
     def parse_input(self):
         levels = [] 
         for line in self.get_puzzle_input(): 
             levels.append(list(map(int, line.strip().split())))  
         return levels
-
 
     def evaulate_level(self, level, n):
         # Stores if a pair of numbers are increasing or decreasing
@@ -31,8 +28,7 @@ class DayTwo(Solution):
         if(all(is_level_safe)): return 1
         else: return 0
 
-
-    def task_one(self):
+    def task_one(self) -> int:
         levels = self.parse_input()
         safe_levels = 0 
         for level in levels:
@@ -41,8 +37,7 @@ class DayTwo(Solution):
             safe_levels += self.evaulate_level(level, n)
         return safe_levels
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         levels = self.parse_input()
         safe_levels = 0  
         for level in levels:
@@ -60,8 +55,8 @@ class DayTwo(Solution):
                     break 
         return safe_levels
 
-
 if __name__ == "__main__": 
     s = DayTwo() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    
