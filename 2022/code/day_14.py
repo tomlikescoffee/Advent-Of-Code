@@ -3,9 +3,7 @@ from solution_base import Solution
 
 
 class DayFourteen(Solution): 
-
-    # Solution 1
-    def task_one(self):
+    def task_one(self) -> int:
         rocks = set()
         sand = set()
         abyss = 0
@@ -60,8 +58,7 @@ class DayFourteen(Solution):
                 
         return len(sand) 
 
-    #Solution 2
-    def task_two(self):
+    def task_two(self) -> int:
         rocks = set()
         sand = set()
         lowest = 0
@@ -118,8 +115,8 @@ class DayFourteen(Solution):
                                 
         return len(sand)
       
-
 if __name__ == "__main__": 
     s = DayFourteen() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

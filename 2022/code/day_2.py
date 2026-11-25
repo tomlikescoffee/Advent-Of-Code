@@ -2,10 +2,7 @@ from solution_base import Solution
 
 
 class DayTwo(Solution): 
-
-
-    # Solution 1
-    def task_one(self):
+    def task_one(self) -> int:
         rps = []  
 
         for line in self.get_puzzle_input(): 
@@ -36,9 +33,7 @@ class DayTwo(Solution):
             i+=2
         return score
 
-
-    # Solution 2 
-    def task_two(self):
+    def task_two(self) -> int:
         rps = []
         for line in self.get_puzzle_input(): 
                 data = line.split(" ") 
@@ -71,9 +66,7 @@ class DayTwo(Solution):
             i+=2 
         return score
 
-
 if __name__ == "__main__": 
     s = DayTwo() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
-

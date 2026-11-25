@@ -7,12 +7,12 @@ from solution_base import Solution
 
 class DayFifteen(Solution): 
     def __init__(self):
+        super().__init__()
         self.maxRow = 2000000
         self.tuningFreqConstant = 4000000
 
-
     # Solution 1
-    def task_one(self):
+    def task_one(self) -> int:
         beacons = set()
         sensors = []
         nobeacons = set() 
@@ -66,7 +66,7 @@ class DayFifteen(Solution):
         return len(nobeacons)
 
     # Solution 2
-    def task_two(self):
+    def task_two(self) -> int:
         print("WARNING: Task Two takes ~90 seconds to finish!")
         sensors = []
 
@@ -90,10 +90,9 @@ class DayFifteen(Solution):
                         beacon = False
                         break
                 if(beacon):
-                    return x* self.tuningFreqConstant + y
+                    return x * self.tuningFreqConstant + y
                 x+=1
             y+=1
-
 
 if __name__ == "__main__": 
     s = DayFifteen() 

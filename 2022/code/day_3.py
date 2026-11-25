@@ -3,7 +3,9 @@ from solution_base import Solution
 
 class DayThree(Solution):  
     def __init__(self):
-        #Dictionary to hold lower case letters and subsequent values
+        super().__init__()
+
+        # Dictionary to hold lower case letters and subsequent values
         self. alphabet = {
             "a": 1, "b": 2, "c": 3, "d": 4, 
             "e": 5, "f": 6, "g": 7, "h": 8, 
@@ -14,9 +16,7 @@ class DayThree(Solution):
             "y": 25, "z": 26
         }
 
-
-    # Solution 1
-    def task_one(self):
+    def task_one(self) -> int:
         total = 0
         # Iterate through each line of the file
         for line in self.get_puzzle_input():            
@@ -46,13 +46,10 @@ class DayThree(Solution):
             secondHalf.clear() 
         return total
     
-
-    # Solution 2
-    def task_two(self):
+    def task_two(self) -> int:
         k, total = 0, 0 
-        
-        
         puzzle_input = self.get_puzzle_input()
+        
         # Iterates until end of the list
         while(k < len(puzzle_input)):
             # Remove \n and places in a set
@@ -78,7 +75,6 @@ class DayThree(Solution):
             k+=3
         
         return total
-
 
 if __name__ == "__main__": 
     s = DayThree() 

@@ -3,15 +3,14 @@ from solution_base import Solution
 
 class DayEight(Solution):  
     def __init__(self):
+        super().__init__()
         self.viewDistance = 0 
         self.visible = 0 
         self.score = 0 
 
         self.parse_puzzle_input()
 
-
-    # Functions
-    def check_right(self, trees, i, j): 
+    def check_right(self, trees, i, j) -> int: 
         for x in range(j + 1, len(trees[i])): 
             if(trees[i][j] <= trees[i][x]):
                 self.viewDistance += 1 
@@ -19,8 +18,7 @@ class DayEight(Solution):
             self.viewDistance += 1
         return 1 
 
-
-    def check_left(self, trees, i, j):
+    def check_left(self, trees, i, j) -> int:
         for x in range(j - 1, -1, -1):
             if(trees[i][j] <= trees[i][x]):
                 self.viewDistance += 1
@@ -29,7 +27,7 @@ class DayEight(Solution):
         return 1 
 
 
-    def check_column_down(self, trees, i, j):
+    def check_column_down(self, trees, i, j) -> int:
         for x in range(i + 1, len(trees)):
             if(trees[i][j] <= trees[x][j]):
                 self.viewDistance += 1
@@ -37,7 +35,7 @@ class DayEight(Solution):
             self.viewDistance += 1
         return 1
 
-    def check_column_up(self, trees, i, j): 
+    def check_column_up(self, trees, i, j) -> int: 
         for x in range(i - 1, -1, -1):
             if(trees[i][j] <= trees[x][j]):
                 self.viewDistance+=1
@@ -93,14 +91,11 @@ class DayEight(Solution):
                 if(tmp > self.score): self.score = tmp 
                 tmp = 1 
 
-
-    def task_one(self): return self.visible
-    
-
-    def task_two(self): return self.score
-
+    def task_one(self) -> int: return self.visible
+    def task_two(self) -> int: return self.score
 
 if __name__ == "__main__": 
     s = DayEight() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

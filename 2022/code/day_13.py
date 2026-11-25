@@ -5,13 +5,10 @@ from solution_base import Solution
 
 
 class DayThirteen(Solution):
-
-
-    def eval_num(self, left, right):
+    def eval_num(self, left, right) -> int:
         if(left < right): return 1
         if(left > right): return 0
         return 2
-
 
     def handle_lists(self, left, right):
         if((type(left)) is list and (type(right)) is list):
@@ -35,11 +32,9 @@ class DayThirteen(Solution):
         if((type(left)) is int and (type(right)) is int):
             return self.eval_num(left, right)
 
-
-    def task_one(self):    
+    def task_one(self) -> int:    
         indice = 0
         total = 0
-
 
         puzzle_input = self.get_puzzle_input()
         for i in range(0, len(puzzle_input), 3): 
@@ -79,8 +74,7 @@ class DayThirteen(Solution):
                 rhs.pop(0)
         return total
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         array = [[2], [6]]
         order = 0
 
@@ -137,7 +131,6 @@ class DayThirteen(Solution):
                 i+=1
                     
         return (array.index([2]) + 1) * (array.index([6]) + 1)
-
 
 if __name__ == "__main__": 
     s = DayThirteen() 

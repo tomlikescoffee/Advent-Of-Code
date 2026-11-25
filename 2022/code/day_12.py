@@ -15,15 +15,14 @@ class Node:
         self.next = []
         self.visited = 0
 
-
 class DayOne(Solution):  
-    def __init__(self):
+    def __init__(self) -> None:
+        super().__init__()
         self.taskOneDest = "S"
         self.taskTwoDest = "E"
         self.maxVal = 9000
 
-
-    def neighbours_task_one(self, graph, node, x, y):
+    def neighbours_task_one(self, graph, node, x, y) -> None:
         if(y == 0):
             if(graph[x][y+1].numVal <= node.numVal + 1):
                 node.next.append(graph[x][y+1]) 
@@ -48,8 +47,7 @@ class DayOne(Solution):
             if(graph[x-1][y].numVal <= node.numVal + 1):
                 node.next.append(graph[x-1][y])   
 
-
-    def task_one(self):  
+    def task_one(self) -> int:  
         graph = [list(line) for line in self.get_puzzle_input()]
         
         nodeQueue = []
@@ -86,8 +84,7 @@ class DayOne(Solution):
             if(visiting.charVal == "E"):
                 return visiting.distance
 
-
-    def neighbours_task_two(self, graph, node, x, y):
+    def neighbours_task_two(self, graph, node, x, y) -> None:
         if(y == 0):
             if(graph[x][y+1].numVal >= node.numVal - 1):
                 node.next.append(graph[x][y+1]) 
@@ -112,8 +109,7 @@ class DayOne(Solution):
             if(graph[x-1][y].numVal >= node.numVal - 1):
                 node.next.append(graph[x-1][y])   
 
-        
-    def task_two(self):
+    def task_two(self) -> int:
         graph = [list(line) for line in self.get_puzzle_input()]
         nodeQueue = []
         for a in range(len(graph)):
@@ -150,7 +146,6 @@ class DayOne(Solution):
             if(visiting.charVal == "a" and visiting.distance < lowest):
                 lowest = visiting.distance
         return lowest
-
 
 if __name__ == "__main__": 
     s = DayOne() 

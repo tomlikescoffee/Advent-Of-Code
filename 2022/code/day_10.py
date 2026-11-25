@@ -3,12 +3,11 @@ from solution_base import Solution
 
 class DayTen(Solution): 
     def __init__(self):
+        super().__init__()
         self.checkCycle = 20
         self.crtWidth = 40
 
-
-    # Solution 1
-    def task_one(self):
+    def task_one(self) -> int:
         cycle, x, total = 1, 1, 0 
 
         for line in self.get_puzzle_input(): 
@@ -23,9 +22,7 @@ class DayTen(Solution):
                 if(cycle == self.checkCycle or ((cycle / self.checkCycle) % 2 == 1 and (cycle / self.checkCycle) <= 11)): total += (x * cycle)
         return total    
 
-
-    # Solution two
-    def task_two(self): 
+    def task_two(self) -> list: 
         cycle, x = 1, 1
         screen = ["." for _ in range(self.crtWidth)]
         crtMessage = []
@@ -50,7 +47,6 @@ class DayTen(Solution):
                     screen = ["." for _ in screen]
                     cycle = 0
         return crtMessage
-
 
 if __name__ == "__main__": 
     s = DayTen() 

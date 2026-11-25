@@ -3,11 +3,10 @@ from solution_base import Solution
 
 class DayFive(Solution): 
     def __init__(self):
+        super().__init__()
         self.value = 9 
 
-
-    # Solution 1
-    def task_one(self):
+    def task_one(self) -> str:
         stack = [[] for _ in range(self.value)]
         x = 1
         space, stackVal = 0, 0  
@@ -50,8 +49,7 @@ class DayFive(Solution):
         
         return "".join([i[0] for i in stack]) 
 
-
-    def task_two(self):  
+    def task_two(self) -> str:  
         stack = [[] for _ in range(self.value)]
         space, stackVal = 0, 0 
         i, j = 0, 0
@@ -90,7 +88,6 @@ class DayFive(Solution):
                 loop-=1
         
         return "".join([i[0] for i in stack]) 
-
 
 if __name__ == "__main__": 
     s = DayFive() 

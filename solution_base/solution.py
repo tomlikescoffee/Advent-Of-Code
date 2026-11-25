@@ -7,13 +7,15 @@ from functools import wraps
 from pathlib import Path
 from typing import Any
 
+MS_PRECISION = 2
+
 def time_solution(solution_func) -> None:
     @wraps(solution_func)
     def timer_wrapper(self : Solution, *args, **kwargs) -> None: 
         s = time.perf_counter()
         result = solution_func(self, *args, **kwargs)
         # Execution time in milliseconds
-        execution_time_ms = round((time.perf_counter() - s) * 1000, 2)
+        execution_time_ms = round((time.perf_counter() - s) * 1000, MS_PRECISION)
         self.execution_times[solution_func.__name__] = execution_time_ms
         return result
     return timer_wrapper

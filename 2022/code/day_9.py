@@ -8,8 +8,7 @@ from solution_base import Solution
 
 
 class DayNine(Solution): 
-
-    def task_one(self):
+    def task_one(self) -> int:
         snake = [[0,0] for _ in range(2)]
         nodesVisited = [[0,0]]
         visited = 1
@@ -65,9 +64,7 @@ class DayNine(Solution):
                                 nodesVisited.append([snake[1][0],snake[1][1]]) 
         return visited             
 
-
-    # Solution 2
-    def task_two(self):
+    def task_two(self) -> int:
         snake = [[0,0] for _ in range(10)]
         nodesVisited = [[0,0]]
         visited = 1
@@ -121,7 +118,6 @@ class DayNine(Solution):
                         visited+=1
                         nodesVisited.append([snake[9][0], snake[9][1]]) 
         return visited 
-
 
 if __name__ == "__main__": 
     s = DayNine() 

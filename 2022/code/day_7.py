@@ -3,13 +3,13 @@ from solution_base import Solution
 
 class DaySeven(Solution):  
     def __init__(self):
+        super().__init__()
         self.dirSize = [] 
         self.diskSpace = 70000000 
         self.requireSpace = 30000000
         self.maxDirSize = 100000
 
-
-    def task_one(self): 
+    def task_one(self) -> int: 
         currentDir = [] 
         runningSize = []
         i = 0 
@@ -49,8 +49,7 @@ class DaySeven(Solution):
             if(num < self.maxDirSize): total += num
         return total
 
-
-    def task_two(self):   
+    def task_two(self) -> int:   
         # Part One needs to be completed prior to part two being run 
         if not self.dirSize: self.task_one()
 
@@ -61,8 +60,8 @@ class DaySeven(Solution):
         for i in range(len(self.dirSize)):
             if(self.dirSize[i] > space): return self.dirSize[i]
 
-
 if __name__ == "__main__": 
     s = DaySeven() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

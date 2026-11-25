@@ -12,14 +12,13 @@ class Monkey:
 
 
 class DayEleven(Solution): 
-
     def __init__(self):
+        super().__init__()
         self.numMonkeys = 8
         self.taskOneRounds = 20
         self.taskTwoRounds = 10000
 
-
-    def task_one(self):
+    def task_one(self) -> int:
         product = 1
         monkeys = [Monkey() for _ in range(self.numMonkeys)] 
         inspected = [0 for _ in range(self.numMonkeys)]
@@ -66,8 +65,7 @@ class DayEleven(Solution):
         inspected = sorted(inspected)    
         return inspected[-2] * inspected[-1] 
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         product = 1
         monkeys = [Monkey() for _ in range(self.numMonkeys)] 
         inspected = [0 for _ in range(self.numMonkeys)]
@@ -113,7 +111,6 @@ class DayEleven(Solution):
 
         inspected = sorted(inspected)    
         return inspected[-2] * inspected[-1] 
-
 
 if __name__ == "__main__": 
     s = DayEleven() 

@@ -2,9 +2,7 @@ from solution_base import Solution
 
 
 class DayOne(Solution): 
-
-    # Solution to part 1
-    def task_one(self):
+    def task_one(self) -> int:
         highestCals = 0 
         totalCals = 0
         
@@ -16,9 +14,7 @@ class DayOne(Solution):
                 totalCals = 0
         return highestCals
 
-
-    # Solution to part 2
-    def task_two(self):
+    def task_two(self) -> int:
         totalCals = 0 
         highest, second, third = 0, 0, 0 
         
@@ -39,7 +35,6 @@ class DayOne(Solution):
                     third = totalCals 
                 totalCals = 0 
         return (highest + second + third)
-
 
 if __name__ == "__main__": 
     s = DayOne() 
