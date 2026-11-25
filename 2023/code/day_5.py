@@ -4,11 +4,8 @@ from solution_base import Solution
 
 
 class DayFive(Solution): 
-
-
     def parse_seeds(self, line):
         return re.sub("[a-zA-Z]+[:]+[ ]", "", line).split(" ") 
-
 
     def parse_puzzle_input(self):
         puzzle_input = self.get_puzzle_input()
@@ -27,9 +24,7 @@ class DayFive(Solution):
                 gardenMappings[i].sort()
                 gardenMappings.append([])
                 i += 1 
-        
         return (seeds, gardenMappings)
-
 
     def parse_map(filePtr):
         spaceCount = 0
@@ -42,8 +37,7 @@ class DayFive(Solution):
                 numLst.append([int(nums[1]), int(nums[1]) + int(nums[2]) - 1, int(nums[0]) - int(nums[1])]) 
         return sorted(numLst)
 
-
-    def binary_search(self, lst, val):
+    def binary_search(self, lst, val) -> int:
         low = 0 
         high = len(lst) - 1
         while(low <= high): 
@@ -55,14 +49,12 @@ class DayFive(Solution):
             else: return mid 
         return -1
 
-
     def map_values(self, lst, mappedVal):
         index = self.binary_search(lst, mappedVal)
         if (index != -1): return mappedVal + lst[index][2] 
         return mappedVal
 
-
-    def task_one(self):
+    def task_one(self) -> int:
         seeds, gardenMappings = self.parse_puzzle_input()
         lowestLocation = math.inf
         for seed in seeds:
@@ -72,13 +64,11 @@ class DayFive(Solution):
             lowestLocation = min(lowestLocation, mappedVal)      
         return lowestLocation
 
-
     def parse_seed_ranges(self, seeds):
         seed_ranges = []
         for i in range(0, len(seeds) - 1, 2): 
             seed_ranges.append([int(seeds[i]), int(seeds[i]) + int(seeds[i + 1]) - 1])
         return sorted(seed_ranges)
-
 
     def split_ranges(self, splitLst, checkLst):
         i = 0 
@@ -98,8 +88,7 @@ class DayFive(Solution):
             i+=1
         return splitLst
 
-
-    def task_two(self): 
+    def task_two(self) -> int: 
         seeds, gardenMappings = self.parse_puzzle_input()  
         seeds = self.parse_seed_ranges(seeds)
         mappedVal = seeds
@@ -107,7 +96,6 @@ class DayFive(Solution):
             mappedVal = self.split_ranges(mappedVal, mapping)
         mappedVal.sort()
         return mappedVal[0][0]
-
 
 if __name__ == "__main__": 
     s = DayFive() 

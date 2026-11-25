@@ -3,23 +3,19 @@ from solution_base import Solution
 
 
 class DayOne(Solution): 
-
-
-    def merge_digits(self, nums):
+    def merge_digits(self, nums) -> int:
         if(len(nums) > 1):
             return int(nums[0] + nums[-1])
         else:
             return int(nums[0] + nums[0])
 
-
-    def task_one(self): 
+    def task_one(self) -> int: 
         total = 0
         for line in self.get_puzzle_input():
                 total += self.merge_digits(re.findall("[0-9]", line))
         return total 
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         digits = {
             "one": "one1one", 
             "two": "two2two", 
@@ -40,8 +36,8 @@ class DayOne(Solution):
             total += self.merge_digits(re.findall("[0-9]", line))
         return total 
     
-
 if __name__ == "__main__": 
     s = DayOne() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

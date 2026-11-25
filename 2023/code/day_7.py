@@ -4,9 +4,9 @@ from solution_base import Solution
 
 class DaySeven(Solution):  
     def __init__(self):
+        super().__init__()
         self.types = 7
         self.sizeOfHand = 5
-
 
     def insert_list(self, hand, handLst, jokers):
         pokercards = {
@@ -31,7 +31,6 @@ class DaySeven(Solution):
                 if(pokercards[hand[i]] > pokercards[sortedHand[0][i]]): break
         return len(handLst)
 
-
     def calculate_total(self, handStrengths):
         total = 0
         counter = 1
@@ -41,8 +40,7 @@ class DaySeven(Solution):
                 counter += 1
         return total
 
-
-    def task_one(self): 
+    def task_one(self) -> int: 
         puzzle_input = self.get_puzzle_input()
         handStrengths = [[] for _ in range(self.types)]
         hands = [line.split(" ") for line in puzzle_input]
@@ -68,8 +66,7 @@ class DaySeven(Solution):
                 handStrengths[largestOccurence + 1].insert(self.insert_list(hand[0], handStrengths[largestOccurence + 1], False), hand)
         return self.calculate_total(handStrengths)
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         puzzle_input = self.get_puzzle_input()
         handStrengths = [[] for _ in range(self.types)]
         hands = [line.split(" ") for line in puzzle_input]
@@ -102,7 +99,6 @@ class DaySeven(Solution):
             else:
                 handStrengths[largestOccurence + 1].insert(self.insert_list(hand[0], handStrengths[largestOccurence + 1], True), hand)    
         return self.calculate_total(handStrengths)
-
 
 if __name__ == "__main__": 
     s = DaySeven() 

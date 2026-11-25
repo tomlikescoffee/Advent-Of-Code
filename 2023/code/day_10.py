@@ -4,8 +4,6 @@ from solution_base import Solution
 # TODO clean up repeated code
 
 class DayTen(Solution): 
-
-
     def find_loop(self, startPos, pipes, tiles, direction):
         loopLength = 0
         visited = []
@@ -39,8 +37,7 @@ class DayTen(Solution):
                 else: direction = (-1, 0)
         return (loopLength, visited)
 
-
-    def task_one(self):
+    def task_one(self) -> int:
         pipes = {}
 
         for y, line in enumerate(self.get_puzzle_input()):
@@ -63,7 +60,6 @@ class DayTen(Solution):
             (loopLength, _) = self.find_loop(start, pipes, tiles, direction)
             if(loopLength): return math.ceil(loopLength / 2)
 
-
     def shoelace(self, loop):
         sum = 0 
         for i in range(len(loop) - 1): 
@@ -75,8 +71,7 @@ class DayTen(Solution):
         sum += (y + y2) * (x - x2)
         return abs(sum / 2)
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         pipes = {}
 
         for y, line in enumerate(self.get_puzzle_input()):
@@ -100,8 +95,8 @@ class DayTen(Solution):
             if(loopLength): break 
         return math.floor(self.shoelace(loop) - (loopLength / 2) + 1) 
 
-
 if __name__ == "__main__": 
     s = DayTen() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

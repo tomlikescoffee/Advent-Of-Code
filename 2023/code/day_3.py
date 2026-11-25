@@ -3,9 +3,7 @@ from solution_base import Solution
 # TODO repeated code in parts one + two can be merged 
 
 class DayThree(Solution): 
-
-
-    def get_number(self, index, engineArray, lineNumber, lineLength):
+    def get_number(self, index, engineArray, lineNumber, lineLength) -> int:
         number = engineArray[lineNumber][index]
         left = index - 1
         while(left >= 0 and engineArray[lineNumber][left].isnumeric()):
@@ -17,36 +15,31 @@ class DayThree(Solution):
             right += 1
         return int(number)
 
-
-    def check_left(self, symbolIndex, lineNumber, engineArray):    
+    def check_left(self, symbolIndex, lineNumber, engineArray) -> bool:    
         if(symbolIndex == 0): return False
         if(engineArray[lineNumber][symbolIndex - 1].isnumeric()): 
             return True
         else: return False  
 
-
-    def check_right(self, symbolIndex, lineNumber, engineArray, lineLength):
+    def check_right(self, symbolIndex, lineNumber, engineArray, lineLength) -> bool:
         if(symbolIndex == lineLength - 1): return False
         if(engineArray[lineNumber][symbolIndex + 1].isnumeric()): 
             return True
         else: return False  
 
-
-    def check_up(self, symbolIndex, lineNumber, engineArray): 
+    def check_up(self, symbolIndex, lineNumber, engineArray) -> bool: 
         if(lineNumber == 0): return False
         if(engineArray[lineNumber - 1][symbolIndex].isnumeric()): 
             return True
         else: return False  
 
-
-    def check_down(self, symbolIndex, lineNumber, engineArray, numberLines):
+    def check_down(self, symbolIndex, lineNumber, engineArray, numberLines) -> bool:
         if(lineNumber == numberLines - 1): return False
         if(engineArray[lineNumber + 1][symbolIndex].isnumeric()): 
             return True
         else: return False  
 
-
-    def task_one(self):
+    def task_one(self) -> int:
         total = 0
         numberLines = 0 
         lineNumber = 0 
@@ -54,7 +47,6 @@ class DayThree(Solution):
         engineArray = []
         symbolsArray = []
         
-
         for line in self.get_puzzle_input():
             engineArray.append([])
             symbolsArray.append([])
@@ -92,8 +84,7 @@ class DayThree(Solution):
                         total += self.get_number(symbolsArray[i][j] + 1, engineArray, i + 1, lineLength)
         return total
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         total = 0
         numberLines = 0 
         lineNumber = 0 
@@ -149,7 +140,6 @@ class DayThree(Solution):
                 if(numAdjGear == 2): 
                     total += ratio
         return total    
-
 
 if __name__ == "__main__": 
     s = DayThree() 

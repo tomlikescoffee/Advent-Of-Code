@@ -4,12 +4,10 @@ from solution_base import Solution
 
 
 class DayTwo(Solution): 
-
     def parse(self, line):
         return re.sub("Game|[,;:]", "", line.strip("\n")).lstrip().split(" ")
 
-
-    def task_one(self):        
+    def task_one(self) -> int:        
         total = 0
         gamePossible = True
         colorDict = {
@@ -29,8 +27,7 @@ class DayTwo(Solution):
             gamePossible = True
         return total
         
-
-    def task_two(self):
+    def task_two(self) -> int:
         total = 0
         colorDict = {
             "red" : 0,
@@ -46,7 +43,6 @@ class DayTwo(Solution):
             total += math.prod(list(colorDict.values()))
             colorDict = dict.fromkeys(colorDict, 0) 
         return total
-
 
 if __name__ == "__main__": 
     s = DayTwo() 

@@ -3,7 +3,6 @@ from solution_base import Solution
 
 
 class DayFour(Solution): 
-
     def parse(self, line):
         nums =  re.sub("^Card [0-9]: ", "", line).rstrip().split("|")
         for i in range (len(nums)):
@@ -11,8 +10,7 @@ class DayFour(Solution):
             nums[i] = (set([i for i in nums[i] if i != ""]))
         return nums
 
-
-    def task_one(self):
+    def task_one(self) -> int:
         total = 0
         for line in self.get_puzzle_input():
             numbers = self.parse(line)
@@ -20,8 +18,7 @@ class DayFour(Solution):
             if(matches): total += 2 ** (matches - 1) 
         return total
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         total = 0
         matches = {}
         scratchCards = {}
@@ -36,7 +33,6 @@ class DayFour(Solution):
                 scratchCards[key + i] += scratchCards[key]
             total += scratchCards[key]
         return total    
-
 
 if __name__ == "__main__": 
     s = DayFour() 

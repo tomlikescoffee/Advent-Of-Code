@@ -3,9 +3,7 @@ from solution_base.solution import Solution
 # TODO move repeated code
 
 class DayEleven(Solution): 
-
-
-    def task_one(self):
+    def task_one(self) -> int:
         galaxies = []
         emptyRows = []
         
@@ -39,8 +37,7 @@ class DayEleven(Solution):
                 total += abs(galaxies[i][0] - galaxies[j][0]) + abs(galaxies[i][1] - galaxies[j][1]) 
         return total
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         galaxies = []
         emptyRows = []
         
@@ -73,8 +70,8 @@ class DayEleven(Solution):
                 total += abs(galaxies[i][0] - galaxies[j][0]) + abs(galaxies[i][1] - galaxies[j][1]) 
         return total 
 
-
 if __name__ == "__main__": 
     s = DayEleven() 
     print(f"Part 1: {s.task_one()}")
     print(f"Part 2: {s.task_two()}")
+    

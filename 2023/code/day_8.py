@@ -11,8 +11,6 @@ class Node():
         
    
 class DayEight(Solution): 
-
-
     def create_network(self, puzzle_input):
         nodeDict =  {}
         startDict = {}
@@ -28,7 +26,6 @@ class DayEight(Solution):
             nodeDict[nodes[0]].right = nodeDict[nodes[2]]
         return startDict
 
-
     def traverse(self, instructions, startNode):
         currentNode = startNode
         i = 0
@@ -43,15 +40,13 @@ class DayEight(Solution):
             steps += 1
         return steps
 
-
-    def task_one(self):
+    def task_one(self) -> int:
         puzzle_input = self.get_puzzle_input()
         instructions = [c for c in puzzle_input[0]]
         startNode = self.create_network(puzzle_input[2:])
         return self.traverse(instructions, startNode["AAA"])
 
-
-    def task_two(self):
+    def task_two(self) -> int:
         puzzle_input = self.get_puzzle_input()
         instructions = [c for c in puzzle_input[0]]
         nodes = self.create_network(puzzle_input[2:]) 
@@ -62,7 +57,6 @@ class DayEight(Solution):
         for num in nearestEnd:
             lcm = math.lcm(lcm, num)
         return lcm
-
 
 if __name__ == "__main__": 
     s = DayEight() 
