@@ -2,6 +2,9 @@ from solution_base import Solution
 
 
 class Day$day(Solution): 
+    def __init__(self) -> None: 
+        super().__init__()
+
     def task_one(self) -> int: return 0
     def task_two(self) -> int: return 0
         
